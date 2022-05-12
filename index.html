@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+
+  <header>
+  <h1>Количественные показатели безопасности атомной станции</h1>
+  <header>
+  <hr>
+  <h3>Математическое ожидание числа аварий за период эксплуатации АС</h3>
+  Планируемое число кампаний
+  <br>
+  <input id="num1" />
+  <br>
+  Вероятность появления аварии в одной компании
+  <br>
+  <input id="num2" />
+  <br>
+  <button onclick="func1()">Рассчитать</button>
+  <br>
+  <p id="result1"></p>
+  <hr>
+  <h3>Удельная интенсивность особых ситуаций на ЯЭУ</h3>
+  Анализируемый период
+  <br>
+  <input id="num3" />
+  <br>
+  Число энергоблоков данного типа
+  <br>
+  <input id="num4" />
+  <br>
+  Число особых ситуаций за анализируемый период
+  <br>
+  <input id="num5" />
+  <br>
+  Суммарное время работы энергоблока данного типа
+  <br>
+  <input id="num6" />
+  <br>
+  Установленная (номинальная) мощность энергоблока данного типа
+  <br>
+  <input id="num7" />
+  <br>
+  <button onclick="func2()">Рассчитать</button>
+  <br>
+  <p id="result2"></p>
+  <hr>
+  <h3>Вероятность аварии в одной смене</h3>
+  Время смены
+  <br>
+  <input id="num8" />
+  <br>
+  Вероятность аварийной ситуации
+  <br>
+  <input id="num9" />
+  <br>
+  Вероятность отказа системы безопасности
+  <br>
+  <input id="num10" />
+  <br>
+  <button onclick="func3()">Рассчитать</button>
+  <br>
+  <p id="result3"></p>
+  <hr>
+  <h3>Уровень безопасности АС</h3>
+  Предельно допустимое значение вероятности отказов
+  <br>
+  <input id="num11" />
+  <br>
+  Суммарная вероятность возникновения выбросов сверх установленных норм из-за отказа одной системы безпоасности
+  <br>
+  <input id="num12" />
+  <br>
+  Количество систем безопасности3
+  <br>
+  <input id="num13" />
+  <br>
+  <button onclick="func4()">Рассчитать</button>
+  <br>
+  <p id="result4"></p>
+  <hr>
+  
+  <script>
+    function func1() {
+      var result1;
+      var num1 = Number(document.getElementById("num1").value);
+      var num2 = Number(document.getElementById("num2").value);
+      {result1 = num1 * num2;
+      }
+  
+      document.getElementById("result1").innerHTML = result1;
+    }
+    function func2() {
+      var result2;
+      var num3 = Number(document.getElementById("num3").value);
+      var num4 = Number(document.getElementById("num4").value);
+      var num5 = Number(document.getElementById("num5").value);
+      var num6 = Number(document.getElementById("num6").value);
+      var num7 = Number(document.getElementById("num7").value);
+      {result2 = ((num3 ** 2) * (num4 ** 2) * num5)/((num6 ** 2) * (num7 ** 2));
+      }
+  
+      document.getElementById("result2").innerHTML = result2;
+    }
+    function func3() {
+      var result3;
+      var num8 = Number(document.getElementById("num8").value);
+      var num9 = Number(document.getElementById("num9").value);
+      var num10 = Number(document.getElementById("num10").value);
+      {result3 = ((num8*num9)*(num8*num10));
+      }
+      document.getElementById("result3").innerHTML = result3;  
+    }
+
+    function func4() {
+      var result4;
+      var resultdop = 0;
+      var sum;
+      var num11 = Number(document.getElementById("num11").value);
+      var num12 = Number(document.getElementById("num12").value);
+      var num13 = Number(document.getElementById("num13").value);
+      for (var i = 0; i< num13; i+=1)
+      {
+        sum=num12**(i+1);
+        resultdop = resultdop + sum;
+      }
+      {
+        result4 = num11/resultdop;
+      }
+      document.getElementById("result4").innerHTML = result4;  
+    }
+
+  </script>
+  
+  </body>
+</html>
